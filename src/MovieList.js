@@ -3,11 +3,9 @@ import "./MovieList.css";
 import MOCK_MOVIES from "./Shared/MockMovies";
 
 class MovieList extends Component {
-  state = { selected: "" };
 
-  onSelectedMovie = movie => {
-    this.setState({ selected: movie });
-    this.props.selectedMovie(movie);
+  callbackMethod = (movie) => {
+    this.props.callbackData(movie);
   };
 
   render() {
@@ -18,7 +16,7 @@ class MovieList extends Component {
           <ul className="movies">
             {MOCK_MOVIES.map(movie => {
               return (
-                <li onClick={event => this.onSelectedMovie(movie)}>
+                <li onClick={event => this.callbackMethod(movie)}>
                   {movie.Title} ({movie.Year})
                 </li>
               );
